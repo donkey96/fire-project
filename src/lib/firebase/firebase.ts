@@ -1,4 +1,4 @@
-import { initializeApp } from '@firebase/app';
+import { getApps, initializeApp } from '@firebase/app';
 import {
   FIREBASE_API_KEY, FIREBASE_APP_ID,
   FIREBASE_AUTH_DOMAIN,
@@ -18,3 +18,5 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
+export const initializeFirebaseApp = () =>
+  !getApps().length ? initializeApp(firebaseConfig) : getApps()
